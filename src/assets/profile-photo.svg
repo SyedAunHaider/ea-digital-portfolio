@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="profilePhotoTitle">
+  <title id="profilePhotoTitle">Placeholder profile photo</title>
+  <circle cx="100" cy="100" r="100" fill="#aa3bff" />
+  <text
+    x="100"
+    y="100"
+    text-anchor="middle"
+    dominant-baseline="central"
+    font-family="system-ui, 'Segoe UI', Roboto, sans-serif"
+    font-size="76"
+    font-weight="500"
+    fill="#ffffff"
+  >SH</text>
+</svg>

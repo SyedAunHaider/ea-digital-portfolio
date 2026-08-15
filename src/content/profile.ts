@@ -16,6 +16,12 @@ export interface ContactInfo {
   location: string
 }
 
+export interface Certification {
+  name: string
+  issuer: string
+  year: string
+}
+
 export interface Profile {
   name: string
   role: string
@@ -23,6 +29,7 @@ export interface Profile {
   about: string[]
   expertise: ExpertiseArea[]
   experience: ExperienceEntry[]
+  certifications: Certification[]
   contact: ContactInfo
 }
 
@@ -79,6 +86,7 @@ export const profile: Profile = {
         'Built and scaled core platform services, laying the technical foundation that later informed enterprise-wide architectural decisions.',
     },
   ],
+  certifications: [],
   contact: {
     email: 'syedaunshah@outlook.com',
     linkedin: 'https://www.linkedin.com/',
