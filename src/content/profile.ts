@@ -86,28 +86,7 @@ export const profile: Profile = {
         'Built and scaled core platform services, laying the technical foundation that later informed enterprise-wide architectural decisions.',
     },
   ],
-  certifications: [
-    {
-      name: 'TOGAF 9 Certified',
-      issuer: 'The Open Group',
-      year: '2019',
-    },
-    {
-      name: 'AWS Certified Solutions Architect - Professional',
-      issuer: 'Amazon Web Services',
-      year: '2021',
-    },
-    {
-      name: 'Microsoft Certified: Azure Solutions Architect Expert',
-      issuer: 'Microsoft',
-      year: '2022',
-    },
-    {
-      name: 'Certified in Risk and Information Systems Control (CRISC)',
-      issuer: 'ISACA',
-      year: '2020',
-    },
-  ],
+  certifications: [],
   contact: {
     email: 'syedaunshah@outlook.com',
     linkedin: 'https://www.linkedin.com/',
