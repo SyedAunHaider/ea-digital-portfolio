@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen, within } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import App from '../App'
 import { profile } from '../content/profile'
 
@@ -71,11 +72,12 @@ describe('App (homepage)', () => {
       'About Me',
       'Expertise',
       'Experience',
+      'Certifications',
       'Contact',
     ])
   })
 
-  it('renders all five sections in order', () => {
+  it('renders all six sections in order', () => {
     const { container } = render(<App />)
     const sectionIds = Array.from(container.querySelectorAll('section')).map(
       (section) => section.id,
@@ -85,7 +87,63 @@ describe('App (homepage)', () => {
       'about',
       'expertise',
       'experience',
+      'certifications',
       'contact',
     ])
+  })
+
+  it('renders a Certifications section with expected content', () => {
+    render(<App />)
+    const heading = screen.getByRole('heading', {
+      level: 2,
+      name: 'Certifications',
+    })
+    const section = heading.closest('section')
+    expect(section).toHaveAttribute('id', 'certifications')
+    profile.certifications.forEach((cert) => {
+      expect(section).toHaveTextContent(cert.name)
+    })
+  })
+
+  it('renders a profile photo with non-empty alt text in the hero section', () => {
+    render(<App />)
+    const heroSection = document.querySelector('#hero') as HTMLElement
+    const img = within(heroSection).getByRole('img')
+    expect(img.getAttribute('alt')).toBeTruthy()
+  })
+
+  it('renders primary navigation with 6 links in the expected order', () => {
+    render(<App />)
+    const nav = screen.getByRole('navigation', { name: 'Primary' })
+    const links = within(nav).getAllByRole('link')
+    expect(links.map((link) => link.textContent)).toEqual([
+      'Home',
+      'About',
+      'Expertise',
+      'Experience',
+      'Certifications',
+      'Contact',
+    ])
+    expect(links.map((link) => link.getAttribute('href'))).toEqual([
+      '#hero',
+      '#about',
+      '#expertise',
+      '#experience',
+      '#certifications',
+      '#contact',
+    ])
+  })
+
+  it('toggles the mobile nav via the hamburger button', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    const toggle = screen.getByRole('button', { name: /menu/i })
+    expect(toggle).toHaveAttribute('aria-expanded', 'false')
+
+    await user.click(toggle)
+    expect(toggle).toHaveAttribute('aria-expanded', 'true')
+
+    await user.click(toggle)
+    expect(toggle).toHaveAttribute('aria-expanded', 'false')
   })
 })

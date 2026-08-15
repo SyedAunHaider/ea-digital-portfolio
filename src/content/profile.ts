@@ -16,6 +16,12 @@ export interface ContactInfo {
   location: string
 }
 
+export interface Certification {
+  name: string
+  issuer: string
+  year: string
+}
+
 export interface Profile {
   name: string
   role: string
@@ -23,6 +29,7 @@ export interface Profile {
   about: string[]
   expertise: ExpertiseArea[]
   experience: ExperienceEntry[]
+  certifications: Certification[]
   contact: ContactInfo
 }
 
@@ -77,6 +84,28 @@ export const profile: Profile = {
       period: '2009 - 2013',
       summary:
         'Built and scaled core platform services, laying the technical foundation that later informed enterprise-wide architectural decisions.',
+    },
+  ],
+  certifications: [
+    {
+      name: 'TOGAF 9 Certified',
+      issuer: 'The Open Group',
+      year: '2019',
+    },
+    {
+      name: 'AWS Certified Solutions Architect - Professional',
+      issuer: 'Amazon Web Services',
+      year: '2021',
+    },
+    {
+      name: 'Microsoft Certified: Azure Solutions Architect Expert',
+      issuer: 'Microsoft',
+      year: '2022',
+    },
+    {
+      name: 'Certified in Risk and Information Systems Control (CRISC)',
+      issuer: 'ISACA',
+      year: '2020',
     },
   ],
   contact: {
