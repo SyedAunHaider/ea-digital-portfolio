@@ -54,6 +54,25 @@ describe('App (homepage)', () => {
     })
   })
 
+  it('renders a Projects section with two project cards', () => {
+    render(<App />)
+    const heading = screen.getByRole('heading', { level: 2, name: 'Projects' })
+    const section = heading.closest('section') as HTMLElement
+    expect(section).toHaveAttribute('id', 'projects')
+
+    const items = section.querySelectorAll('.projects-list > li')
+    expect(items).toHaveLength(2)
+
+    expect(profile.projects).toHaveLength(2)
+    profile.projects.forEach((project) => {
+      expect(section).toHaveTextContent(project.name)
+      expect(section).toHaveTextContent(project.description)
+      project.technologies.forEach((tech) => {
+        expect(section).toHaveTextContent(tech)
+      })
+    })
+  })
+
   it('renders a Contact section with a working mailto link', () => {
     render(<App />)
     const heading = screen.getByRole('heading', { level: 2, name: 'Contact' })
@@ -72,12 +91,13 @@ describe('App (homepage)', () => {
       'About Me',
       'Expertise',
       'Experience',
+      'Projects',
       'Certifications',
       'Contact',
     ])
   })
 
-  it('renders all six sections in order', () => {
+  it('renders all seven sections in order', () => {
     const { container } = render(<App />)
     const sectionIds = Array.from(container.querySelectorAll('section')).map(
       (section) => section.id,
@@ -87,6 +107,7 @@ describe('App (homepage)', () => {
       'about',
       'expertise',
       'experience',
+      'projects',
       'certifications',
       'contact',
     ])
@@ -112,7 +133,7 @@ describe('App (homepage)', () => {
     expect(img.getAttribute('alt')).toBeTruthy()
   })
 
-  it('renders primary navigation with 6 links in the expected order', () => {
+  it('renders primary navigation with 7 links in the expected order', () => {
     render(<App />)
     const nav = screen.getByRole('navigation', { name: 'Primary' })
     const links = within(nav).getAllByRole('link')
@@ -121,6 +142,7 @@ describe('App (homepage)', () => {
       'About',
       'Expertise',
       'Experience',
+      'Projects',
       'Certifications',
       'Contact',
     ])
@@ -129,6 +151,7 @@ describe('App (homepage)', () => {
       '#about',
       '#expertise',
       '#experience',
+      '#projects',
       '#certifications',
       '#contact',
     ])

@@ -22,6 +22,12 @@ export interface Certification {
   year: string
 }
 
+export interface Project {
+  name: string
+  description: string
+  technologies: string[]
+}
+
 export interface Profile {
   name: string
   role: string
@@ -29,6 +35,7 @@ export interface Profile {
   about: string[]
   expertise: ExpertiseArea[]
   experience: ExperienceEntry[]
+  projects: Project[]
   certifications: Certification[]
   contact: ContactInfo
 }
@@ -84,6 +91,20 @@ export const profile: Profile = {
       period: '2009 - 2013',
       summary:
         'Built and scaled core platform services, laying the technical foundation that later informed enterprise-wide architectural decisions.',
+    },
+  ],
+  projects: [
+    {
+      name: 'Enterprise Architecture Transformation',
+      description:
+        'Enterprise architecture modernization using SAP LeanIX, covering capability mapping, application portfolio and architecture governance.',
+      technologies: ['SAP LeanIX', 'TOGAF', 'Cloud'],
+    },
+    {
+      name: 'AI-Powered SDLC Automation',
+      description:
+        'Automated software delivery workflow from requirement to deployment, with AI agents supporting planning, coding, testing and Git integration.',
+      technologies: ['Claude Code', 'Jira', 'GitHub', 'MCP'],
     },
   ],
   certifications: [],

@@ -196,6 +196,7 @@
 
 .expertise-list,
 .experience-list,
+.projects-list,
 .certifications-list {
   list-style: none;
   margin: 24px 0 0;
@@ -219,9 +220,14 @@
   p {
     margin: 0;
   }
+
+  p + p {
+    margin-top: 8px;
+  }
 }
 
-.expertise-list {
+.expertise-list,
+.projects-list {
   grid-template-columns: repeat(2, 1fr);
 
   @media (max-width: 640px) {
