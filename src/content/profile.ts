@@ -93,6 +93,8 @@ export const profile: Profile = {
         'Built and scaled core platform services, laying the technical foundation that later informed enterprise-wide architectural decisions.',
     },
   ],
+  // Sample project content explicitly specified in the KAN-3 Jira story
+  // (names, descriptions and technologies are verbatim from the story text).
   projects: [
     {
       name: 'Enterprise Architecture Transformation',
